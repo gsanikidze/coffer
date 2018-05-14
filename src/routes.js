@@ -10,6 +10,7 @@ const MainRouter = () => {
         <Switch>
             <Route exact path="/" component={Home}/>
 
+
             <Route exact component={PageNotFound}/>
         </Switch>
     ) 
