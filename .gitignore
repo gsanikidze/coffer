@@ -19,4 +19,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # configuration files
-src/CONFIGURATION.js
+src/CONFIG.js

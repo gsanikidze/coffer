@@ -1,9 +1,12 @@
 import React from 'react';
 
+// my comp
+import { Title } from '../../UI_ATOMS';
+
 const Home = () => {
     return(
     <div>
-        Home Component
+        <Title>Home Component</Title>
     </div>
     )
 }
