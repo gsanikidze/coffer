@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
+// my comp
+import Routes from './routes';
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        Hello World!
-      </div>
+        <Routes/>
     );
   }
 }
