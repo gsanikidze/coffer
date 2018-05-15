@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="520 63 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2ea4ef"/>
+      <stop offset="1" stop-color="#416dc5"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_45" data-name="Group 45" transform="translate(520 63)">
+    <path id="Path_15" data-name="Path 15" class="cls-1" d="M12.017,0A12,12,0,1,1,0,12.017,12.006,12.006,0,0,1,12.017,0Zm6.34,11.751v.6a1.119,1.119,0,0,1-1.129,1.129H13.444v3.784a1.141,1.141,0,0,1-1.129,1.129h-.6a1.141,1.141,0,0,1-1.129-1.129V13.477H6.8a1.141,1.141,0,0,1-1.129-1.129v-.6A1.141,1.141,0,0,1,6.8,10.622h3.784V6.838A1.119,1.119,0,0,1,11.718,5.71h.6a1.119,1.119,0,0,1,1.129,1.129v3.784h3.784A1.119,1.119,0,0,1,18.357,11.751Z"/>
+  </g>
+</svg>

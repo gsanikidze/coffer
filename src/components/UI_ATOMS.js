@@ -59,4 +59,10 @@ line-height: 21pt;
 opacity: 0.64;
 `;
 
-export {Title, Label, Paragraph, LightText, WhiteText, WhiteLightText, WhiteVeryLightText};
+const MainIcons = styled.img`
+    height: 24pt;
+    margin: 24pt;
+    cursor: pointer;
+`;
+
+export {Title, Label, Paragraph, LightText, WhiteText, WhiteLightText, WhiteVeryLightText, MainIcons};
