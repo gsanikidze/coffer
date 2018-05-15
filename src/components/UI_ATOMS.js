@@ -65,4 +65,20 @@ const MainIcons = styled.img`
     cursor: pointer;
 `;
 
-export {Title, Label, Paragraph, LightText, WhiteText, WhiteLightText, WhiteVeryLightText, MainIcons};
+const MainLine = styled.div`
+    width: 100%;
+    height: 1pt;
+    background-color: ${COLORS.gray};
+    margin-top: 16pt;
+    margin-bottom: 16pt;
+`;
+
+const DropDownArrow = styled.img`
+    width: 8pt;
+    transform: rotate(${props => props.clicked ? '0' : '180deg'});
+    display: inline-block;
+`;
+
+export {
+    Title, Label, Paragraph, LightText, WhiteText, WhiteLightText, WhiteVeryLightText,
+    MainIcons, MainLine, DropDownArrow};
