@@ -1,0 +1,12 @@
+.bank_card_item{
+    padding: 16pt;
+}
+
+.bank_card_item .card_top{
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+}
+
+.bank_card_item .card_number, .bank_card_item .card_date{
+    margin-top: 16pt;
+}

@@ -14,7 +14,7 @@ const COLORS = {
     txt_light_gray: '#A2ADBE'    
 }
 
-const MAIN_SHADOW = '0 4pt 16pt 0px rgba(0,0,0,0.05);';
+const MAIN_SHADOW = '0 4pt 16pt 0px rgba(0,0,0,0.05)';
 
 const MAIN_GRADIENT = `linear-gradient(45deg, ${COLORS.primary}, ${COLORS.secondary});`;
 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { css } from 'glamor';
 
+// style
+import './sidebar_layout.css';
+
 // imgs
 import log_out_icon from '../../../img/icons/log_out.svg';
 import arrow_icon from '../../../img/icons/arrow.svg';
@@ -12,10 +15,13 @@ import { MainIcons, Label, MainLine, Paragraph, DropDownArrow } from '../../UI_A
 import ProfilePic from '../../moleculas/ProfilePic';
 import FriendsList from '../../moleculas/FriendsList';
 import BankCardList from '../../moleculas/BankCardList';
+import { MAIN_SHADOW, COLORS } from '../../UI_VARS';
 
 const sidebarLayout = css({
-    width: "280pt",
-    backgroundColor: "red",
+    width: "22%",
+    backgroundColor: COLORS.white,
+    boxShadow: MAIN_SHADOW,
+    borderRight: `1pt solid ${COLORS.gray}`
 });
 
 
@@ -23,34 +29,37 @@ const sidebarLayout = css({
 class Sidebar extends Component {
     render() {
         return (
-            <div {...sidebarLayout}>
+            <div {...sidebarLayout} id="sidebar">
 
-                <div id="sidebar_top">
-                    <MainIcons src={log_out_icon} alt="Log Out"/>
+                <MainIcons id="log_out_icon" src={log_out_icon} alt="Log Out"/>
+                    
+                <div id="profile_info">
                     <ProfilePic profilePic={profile_pic} size={64}/>
                     <Label centeredText> N. Surname </Label>
                 </div>
 
                 <MainLine/>
 
-                <div id="sidebar_friends">
-
-                    <div id="Friends">
-                        <div id="sidebar_show_friends_label">
-                            <Paragraph>Friends</Paragraph>
-                            <DropDownArrow src={arrow_icon} clicked={true} alt="Friends List"/>
-                        </div>
-                        <MainIcons src={add_gray_icon} alt="Invite Friends"/>
+                <div id="friends">
+                    <div id="show_friends_label">
+                        <Paragraph>Friends</Paragraph>
+                        <DropDownArrow src={arrow_icon} clicked={true} alt="Friends List"/>
+                    </div>
+                    <MainIcons src={add_gray_icon} alt="Invite Friends"/>
+                    <div id="friend_list">
                         <FriendsList/>
                     </div>
+                </div>
 
-                    <div id="Cards">
-                        <Paragraph>Cards</Paragraph>
-                        <MainIcons src={add_gray_icon} alt="Invite Friends"/>
+                <div id="cards">
+                    <Paragraph>Cards</Paragraph>
+                    <MainIcons src={add_gray_icon} alt="Invite Friends"/>
+                    <div id="card_list">
                         <BankCardList/>
                     </div>
-                </div>         
-                       
+                </div>
+         
+
             </div>
         );
     }

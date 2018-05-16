@@ -1,0 +1,66 @@
+#sidebar {
+    height: 100%;
+    display: grid;
+}
+
+#sidebar #log_out_icon {
+    justify-self: end;
+}
+
+#sidebar #profile_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 16pt;
+    margin-right: 16pt;
+}
+
+#sidebar #profile_info > div{
+    margin-top: 0 !important;
+}
+
+#sidebar #friends{
+    margin-left: 16pt;
+    margin-right: 16pt;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#sidebar #friends #show_friends_label img{
+    padding-bottom: 4pt;
+    padding-left: 4pt;
+}
+
+#sidebar #friends #show_friends_label p{
+    display: inline;
+}
+
+#sidebar #friends > img{
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 16pt;
+    margin-left: auto;
+}
+
+#sidebar #friend_list{
+    display: flex;
+}
+
+#sidebar #friends #friend_list > div{
+    margin: 0 8pt 0 0;
+}
+
+#sidebar #cards{
+    margin: 24pt 16pt 0 16pt;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+#sidebar #cards img{
+    margin: 0 0 16pt 0;
+    justify-self: end;
+}
+
+#sidebar #cards #card_list{
+    grid-area: 2 / 1 / span 2 / span 2;
+}

@@ -61,7 +61,7 @@ opacity: 0.64;
 
 const MainIcons = styled.img`
     height: 24pt;
-    margin: 24pt;
+    margin: 16pt;
     cursor: pointer;
 `;
 
