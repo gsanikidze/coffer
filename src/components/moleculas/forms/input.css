@@ -1,3 +1,35 @@
-.number_input{
-    
+.text_input{
+    display: flex;
+    align-items: center;
+}
+
+.text_input .text_input_field{
+    box-sizing: border-box;
+    background: none;
+    padding: 4pt;
+    border-radius: 4pt;
+    font-size: 16pt;
+    line-height: 21pt;
+    height: 36pt;
+    width: 100%;
+    padding-left: 44px;
+}
+
+.text_input .submit_icon{
+    height: 36pt;
+    margin-left: -76px;
+    cursor: pointer;
+}
+
+.text_input .us_dollar_icon{
+    height: 24pt;
+    position: absolute;
+    margin-left: 8pt;
+}
+
+.line{
+    width: 1pt;
+    height: 24pt;
+    position: absolute;
+    margin-left: 24pt;
 }

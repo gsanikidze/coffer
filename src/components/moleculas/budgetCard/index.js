@@ -23,7 +23,7 @@ const BudgetCard = (props) => {
                 backgroundImage: `url(${imgURL})`
             }
             return (
-                <div style={style} className="cover">{console.log(imgURL)}</div>
+                <div style={style} className="cover"></div>
                 )
         }
     }
