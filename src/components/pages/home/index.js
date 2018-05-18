@@ -4,7 +4,7 @@ import Masonry from 'react-masonry-component';
 // my comp
 import './style.css';
 import CreateBudgetButton from '../../moleculas/CreateBudgetButton';
-import BudgetCard from '../../moleculas/BudgetCard';
+import BudgetCard from '../../moleculas/budgetCard/index';
 
 const masonryOptions = {
     transitionDuration: 0.2

@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 // my comp
-import { MAIN_RADIUS, COLORS } from '../UI_VARS';
-import { WhiteText, WhiteLightText, WhiteVeryLightText } from '../UI_ATOMS';
+import { MAIN_RADIUS, COLORS } from '../../UI_VARS';
+import { WhiteText, WhiteLightText, WhiteVeryLightText } from '../../UI_ATOMS';
 import './bank_card_layout.css';
 
 // imgs
-import bullets_white_icon from '../../img/icons/bullets_white.svg'
+import bullets_white_icon from '../../../img/icons/bullets_white.svg'
 
 const BankCard = () => {
 

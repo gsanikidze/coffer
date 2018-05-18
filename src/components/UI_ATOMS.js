@@ -59,6 +59,7 @@ line-height: 21pt;
 opacity: 0.64;
 `;
 
+// icons
 const MainIcons = styled.img`
     height: 24pt;
     margin: 16pt;
@@ -79,6 +80,21 @@ const DropDownArrow = styled.img`
     display: inline-block;
 `;
 
+// buttons
+const MainButton = styled.div`
+    color: ${COLORS.primary};
+    font-family: ${MAIN_FONT};
+    font-size: 16pt;
+    line-height: 21pt;
+    border: 1pt solid ${COLORS.primary};
+    border-radius: 4pt;
+    padding: 8pt;
+    text-align: center;
+    cursor: pointer;
+`;
+
 export {
     Title, Label, Paragraph, LightText, WhiteText, WhiteLightText, WhiteVeryLightText,
-    MainIcons, MainLine, DropDownArrow};
+    MainIcons, MainLine, DropDownArrow,
+    MainButton
+};
