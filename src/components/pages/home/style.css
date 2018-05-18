@@ -1,18 +1,12 @@
 #home_container{
     padding: 16pt 0 16pt 0;
-    display: grid;
-    grid-template-columns: 1fr;
 }
 
 .card_size{
     margin-right: 16pt;
     margin-bottom: 16pt;
-    height: 56pt;
+    height: auto;
     max-width: 283pt;
     min-width: 224pt;
     width: 47%;
-}
-
-.gray{
-    background-color: gray;
 }

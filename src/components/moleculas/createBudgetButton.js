@@ -6,7 +6,7 @@ import { MAIN_SHADOW } from '../UI_VARS';
 import { Label, MainIcons } from '../UI_ATOMS';
 import add_blue_icon from '../../img/icons/add_blue.svg'
 
-const createBudgetButton = (props) => {
+const CreateBudgetButton = (props) => {
 
     const Button = styled.div`
         width: 100%;
@@ -30,4 +30,4 @@ const createBudgetButton = (props) => {
     )
 };
 
-export default createBudgetButton;
+export default CreateBudgetButton;

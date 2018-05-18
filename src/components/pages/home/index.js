@@ -3,7 +3,8 @@ import Masonry from 'react-masonry-component';
 
 // my comp
 import './style.css';
-import CreateBudgetButton from '../../moleculas/createBudgetButton';
+import CreateBudgetButton from '../../moleculas/CreateBudgetButton';
+import BudgetCard from '../../moleculas/BudgetCard';
 
 const masonryOptions = {
     transitionDuration: 0.2
@@ -25,16 +26,28 @@ class Home extends Component  {
                     <div className="card_size">
                         <CreateBudgetButton/>
                     </div>
-                    <div className="card_size gray">Container</div>
-                    <div className="card_size gray">Container</div>
-                    <div className="card_size gray">Container</div>
-                    <div className="card_size gray">Container</div>
-                    <div className="card_size gray">Container</div>
-                    <div className="card_size gray">Container</div>
-                    <div className="card_size gray">Container</div>
-                    <div className="card_size gray">Container</div>
-                    <div className="card_size gray">Container</div>
-                    <div className="card_size gray">Container</div>
+                    <div className="card_size">
+                        <BudgetCard/>
+                    </div>
+                    <div className="card_size">
+                        <BudgetCard/>
+                    </div>
+                    <div className="card_size">
+                        <BudgetCard/>
+                    </div>
+                    <div className="card_size">
+                        <BudgetCard/>
+                    </div>
+                    <div className="card_size">
+                        <BudgetCard/>
+                    </div>
+                    <div className="card_size">
+                        <BudgetCard/>
+                    </div>
+                    <div className="card_size">
+                        <BudgetCard/>
+                    </div>
+                    
                 </Masonry>
             </div>
         )
