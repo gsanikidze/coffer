@@ -1,0 +1,18 @@
+#home_container{
+    padding: 16pt 16pt 16pt 0;
+    
+}
+.container1, .container2, .container3, .container4{
+    background-color: gray;
+    width: 250px;
+    height: 150px;
+    margin: 16pt;
+}
+
+.container1{
+    height: 120px;
+}
+
+.container2{
+    height: 250px;
+}

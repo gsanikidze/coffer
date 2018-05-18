@@ -18,7 +18,6 @@ import BankCardList from '../../moleculas/BankCardList';
 import { MAIN_SHADOW, COLORS } from '../../UI_VARS';
 
 const sidebarLayout = css({
-    width: "22%",
     backgroundColor: COLORS.white,
     boxShadow: MAIN_SHADOW,
     borderRight: `1pt solid ${COLORS.gray}`
