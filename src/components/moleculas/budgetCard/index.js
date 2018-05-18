@@ -14,7 +14,7 @@ import { NumberInput } from '../forms/Input';
 
 const BudgetCard = (props) => {
 
-    const percent = 100;
+    const percent = 87;
     let hideDoneIcon;
 
     const withImageOrNot = (imgURL) => {      
