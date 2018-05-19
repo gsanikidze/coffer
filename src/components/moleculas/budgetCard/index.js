@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 // my comp
-import { MAIN_SHADOW, COLORS } from '../../UI_VARS';
-import { Title, MainIcons, MainButton } from '../../UI_ATOMS';
+import { MAIN_SHADOW } from '../../UI_VARS';
+import { Title, MainIcons, MainButton, ProgressBar } from '../../UI_ATOMS';
 import add_gray_icon from '../../../img/icons/add_gray.svg'
 import bullets_gray_icon from '../../../img/icons/bullets_gray.svg'
 import budget_is_done_icon from '../../../img/icons/done.svg'
@@ -38,25 +38,7 @@ const BudgetCard = (props) => {
         }
     }
 
-    const progresBar = (percent) => {
-        if(percent){
-            const progressPercent = {
-                width: percent + "%",
-                height: "100%",
-                backgroundColor: COLORS.secondary
-            }
-
-            const lightBack = {
-                backgroundColor: COLORS.light_gray
-            }
-
-            return (
-                    <div className="progress_bar" style={lightBack}>
-                        <div style={progressPercent} className="progress"></div>
-                    </div>
-                )
-        }
-    }
+    
 
     const Card = styled.div`
         width: 100%;
@@ -91,7 +73,7 @@ const BudgetCard = (props) => {
                 </div>
                 {withImageOrNot(bike_photo)}  
                 {budgetIsFull(percent)}  
-                {progresBar(percent)}
+                {ProgressBar(percent)}
                 <div className="brick"></div>
             </div>  
         </Card>

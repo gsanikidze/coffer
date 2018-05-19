@@ -18,10 +18,10 @@ class Home extends Component  {
         return(
             <div id="home_container">
             <Masonry 
-                    elementType={'div'} // default 'div'
-                    options={masonryOptions} // default {}
-                    disableImagesLoaded={false} // default false
-                    updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false         
+                    elementType={'div'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}     
                 >   
                     <div className="card_size">
                         <CreateBudgetButton/>

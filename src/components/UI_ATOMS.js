@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
+
 
 //my comp
 import {MAIN_FONT, COLORS} from './UI_VARS';
@@ -93,8 +95,30 @@ const MainButton = styled.div`
     cursor: pointer;
 `;
 
+const ProgressBar = (percent) => {
+    if(percent){
+        const progressPercent = {
+            width: percent + "%",
+            height: "100%",
+            backgroundColor: COLORS.secondary
+        }
+
+        const pbStyle = {
+            backgroundColor: COLORS.light_gray,
+            height: '8pt'
+        }
+
+        return (
+                <div className="progress_bar" style={pbStyle}>
+                    <div style={progressPercent} className="progress"></div>
+                </div>
+            )
+    }
+}
+
 export {
     Title, Label, Paragraph, LightText, WhiteText, WhiteLightText, WhiteVeryLightText,
     MainIcons, MainLine, DropDownArrow,
-    MainButton
+    MainButton,
+    ProgressBar
 };

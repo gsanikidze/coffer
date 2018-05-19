@@ -2,6 +2,7 @@
     height: 100vh;
     display: grid;
     position: fixed;
+    z-index: 99;
 }
 
 #sidebar #log_out_icon {

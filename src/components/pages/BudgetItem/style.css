@@ -1,0 +1,48 @@
+#budget_item #container{
+    padding-top: 48pt;
+    margin: 0 auto;
+    width: 503pt;
+    height: 100%;
+}
+#budget_item #cover{
+    width: 100%;
+    height: 300pt;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#budget_item #friends_and_add_more_friends{
+    display: flex;
+}
+
+#budget_item #friend_list div{
+    margin: 0 4pt 0 0;
+}
+
+#budget_item #add_friends, #budget_item #edit_budget{
+    margin: 0;
+}
+
+#budget_item #edit_and_friends{
+    display: flex;
+    justify-content: space-between;
+}
+
+#budget_item #title, #budget_item #light_text, #budget_item .text_input{
+    margin: 0 16pt;
+}
+
+#budget_item .progress_bar, #budget_item #edit_and_friends{
+    margin: 16pt;
+}
+
+#budget_item #more_info #friend_list{
+    display: flex;
+    flex-direction: column;
+    margin: 16pt;
+}
+
+#budget_item #more_info #friend_list .friend{
+    margin-bottom: 8pt;
+}
