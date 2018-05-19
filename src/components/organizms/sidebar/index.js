@@ -11,11 +11,13 @@ import add_gray_icon from '../../../img/icons/add_gray.svg';
 import profile_pic from '../../../img/profile_pics/profile_pic.jpg';
 
 // my comp
-import { MainIcons, Label, MainLine, Paragraph, DropDownArrow } from '../../UI_ATOMS';
+import { MainIcons, Label, MainLine, Paragraph, DropDownArrow, ActiveButton } from '../../UI_ATOMS';
 import ProfilePic from '../../moleculas/ProfilePic';
 import FriendsList from '../../moleculas/FriendsList';
 import BankCardList from '../../moleculas/BankCardList';
 import { MAIN_SHADOW, COLORS } from '../../UI_VARS';
+import { InputWithLabel } from '../../moleculas/forms/Input';
+import close_window_icon from '../../../img/icons/close.svg';
 
 const sidebarLayout = css({
     backgroundColor: COLORS.white,
@@ -26,9 +28,47 @@ const sidebarLayout = css({
 
 
 class Sidebar extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            openSystemInvitationPopup: false
+        }
+    }
+
     render() {
+
+        const switchPopupSystemInvitation = () => {
+            this.setState({
+                openSystemInvitationPopup: !this.state.openSystemInvitationPopup
+            })
+        }
+
+        const InviteFriendInSystem = (props) => {
+            return (
+                <div>
+                    {
+                        props.openSystemInvitationPopup ? (
+                            <div className="ivite_friend_popup">
+                                <MainIcons src={close_window_icon} onClick={switchPopupSystemInvitation}/>
+                                <div className="friends">
+                                    <InputWithLabel label="Ivite Friend In System" placeHolder="type e-mail"/>
+                                </div>
+                                <ActiveButton className="btn">Send Invitation</ActiveButton>
+                            </div>
+                            )                        
+                        : null
+                    }
+                </div>
+            );
+        };
+
+
+
+
         return (
             <div {...sidebarLayout} id="sidebar">
+                <InviteFriendInSystem openSystemInvitationPopup={this.state.openSystemInvitationPopup}/>
 
                 <MainIcons id="log_out_icon" src={log_out_icon} alt="Log Out"/>
                     
@@ -44,7 +84,7 @@ class Sidebar extends Component {
                         <Paragraph>Friends</Paragraph>
                         <DropDownArrow src={arrow_icon} clicked={true} alt="Friends List"/>
                     </div>
-                    <MainIcons src={add_gray_icon} alt="Invite Friends"/>
+                    <MainIcons src={add_gray_icon} onClick={switchPopupSystemInvitation} alt="Invite Friends"/>
                     <div id="friend_list">
                         <FriendsList/>
                     </div>

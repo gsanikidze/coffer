@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 // my comp
-import { MAIN_SHADOW, COLORS } from '../../UI_VARS';
+import { MAIN_SHADOW } from '../../UI_VARS';
 import { Title, MainIcons, MainButton, ProgressBar, ActiveButton } from '../../UI_ATOMS';
 import add_gray_icon from '../../../img/icons/add_gray.svg'
 import bullets_gray_icon from '../../../img/icons/bullets_gray.svg'
@@ -67,7 +67,7 @@ class BudgetCard extends Component{
                 <div>
                     {
                         props.openPopup ? (
-                            <div className="ivite_friend_popup" style={{backgroundColor: COLORS.white, opacity: "0.99"}}>
+                            <div className="ivite_friend_popup">
                                 <MainIcons src={close_window_icon} onClick={switchPopup}/>
                                 <div className="friends">
                                     <InputWithLabel label="Friend Name" placeHolder="search friend"/>
