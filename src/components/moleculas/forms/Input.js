@@ -3,6 +3,7 @@ import React from 'react';
 // my comp
 import './input.css';
 import { COLORS, MAIN_FONT } from '../../UI_VARS';
+import { Label } from '../../UI_ATOMS';
 import submit_icon from '../../../img/icons/add_money.svg';
 import us_dollar_icon from '../../../img/icons/us_dollar.svg';
 
@@ -12,16 +13,33 @@ const TextInputFieldStyle = {
     fontFamily: MAIN_FONT,
 }
 
+const InputField = (props) => {
+    return <input style={TextInputFieldStyle} placeholder={props.placeHolder || "Placeholder"} type="text" className="text_input_field"/>
+};
+
 const NumberInput = (props) => {
     return(
         <div className="text_input">
             <img src={us_dollar_icon} alt="Currency" className="us_dollar_icon"/>
-
             <div className="line" style={{backgroundColor: COLORS.dark_gray}}></div>
-            <input style={TextInputFieldStyle} placeholder={props.placeHolder || "Placeholder"} type="text" className="text_input_field"/>
+            {InputField(props)}
             <img src={submit_icon} alt="Submit Money" className="submit_icon"/>
         </div>
     )
 }
 
-export { NumberInput };
+const InputWithLabel = (props) => {
+    return(
+        <div className="text_input_standard">
+            <Label className="label">
+                {props.label || "Label"}
+                {
+                props.isRequired ? <Label className="is_required">*</Label> : null
+                }
+            </Label>
+            {InputField(props)}
+        </div>
+    )
+}
+
+export { NumberInput, InputWithLabel};

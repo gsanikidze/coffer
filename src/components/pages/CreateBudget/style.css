@@ -1,0 +1,52 @@
+#create_budget .container{
+    padding-top: 48pt;
+    width: 503pt;
+    margin: 0 auto;
+}
+
+#create_budget #title{
+    margin-top: 40pt;
+    margin-bottom: 24pt;
+}
+
+#create_budget #form_first_line{
+    display: flex;
+    margin-bottom: 16pt;
+}
+
+#create_budget #form_first_line div:nth-child(1){
+    width: 100%;
+    margin-right: 16pt;
+}
+
+#create_budget #share_with_friends{
+    margin-bottom: 16pt;
+}
+#create_budget #share_with_friends #friend_list div{
+    margin: 8pt 8pt 0 0;
+}
+
+#create_budget #buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16pt;
+}
+#create_budget #buttons div{
+    margin-left: 8pt;
+}
+
+#create_budget #photos{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8pt;
+    margin-bottom: 16pt;
+}
+
+#create_budget .cover_image{
+    width: 24%;
+    height: 70pt;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 4pt;
+}

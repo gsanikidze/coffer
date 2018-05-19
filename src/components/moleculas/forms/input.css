@@ -3,7 +3,7 @@
     align-items: center;
 }
 
-.text_input .text_input_field{
+.text_input_field{
     box-sizing: border-box;
     background: none;
     padding: 4pt;
@@ -32,4 +32,19 @@
     height: 24pt;
     position: absolute;
     margin-left: 24pt;
+}
+
+.text_input_standard h3{
+    padding-bottom: 4pt;
+}
+
+.text_input_standard .text_input_field{
+    padding-left: 8pt;
+}
+
+.text_input_standard .label{
+    display: flex;
+}
+.text_input_standard .is_required{
+    margin-left: 4pt;
 }
