@@ -1,0 +1,50 @@
+#add_bank_card .container{
+    padding-top: 48pt;
+    width: 503pt;
+    margin: 0 auto;
+}
+
+#add_bank_card #title{
+    margin-top: 40pt;
+    margin-bottom: 24pt;
+}
+
+#add_bank_card .single_line{
+    margin-bottom: 16pt;
+}
+
+#add_bank_card #card_numbers{
+    margin-bottom: 16pt;
+    display: flex;
+}
+
+#add_bank_card #card_numbers div:nth-child(1){
+    width: 100%;
+    margin-right: 16pt;
+}
+
+#add_bank_card #date{
+    margin-bottom: 16pt;
+    display: flex;
+}
+
+#add_bank_card #date div{
+    width: 100%;
+}
+
+#add_bank_card #date div:nth-child(1){
+    margin-right: 8pt;
+}
+
+#add_bank_card #date div:nth-child(2){
+    margin-left: 8pt;
+}
+
+#add_bank_card #buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16pt;
+}
+#add_bank_card #buttons div{
+    margin-left: 8pt;
+}

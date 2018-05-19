@@ -108,6 +108,19 @@ const ActiveButton = styled.div`
     width: 128pt;
 `;
 
+const GrayButton = styled.div`
+    color: ${COLORS.white};
+    background-color: ${COLORS.dark_gray};
+    font-family: ${MAIN_FONT};
+    font-size: 16pt;
+    line-height: 21pt;
+    border-radius: 4pt;
+    padding: 8pt;
+    text-align: center;
+    cursor: pointer;
+    width: 128pt;
+`;
+
 const PassiveButton = styled.div`
     color: ${COLORS.txt_light_gray};
     font-family: ${MAIN_FONT};
@@ -147,6 +160,6 @@ const ProgressBar = (percent) => {
 export {
     Title, Label, Paragraph, LightText, WhiteText, WhiteLightText, WhiteVeryLightText,
     MainIcons, MainLine, DropDownArrow,
-    MainButton, ActiveButton, PassiveButton,
+    MainButton, ActiveButton, PassiveButton, GrayButton,
     ProgressBar
 };
