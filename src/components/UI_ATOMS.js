@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 //my comp
-import {MAIN_FONT, COLORS} from './UI_VARS';
+import {MAIN_FONT, COLORS, MAIN_GRADIENT} from './UI_VARS';
 
 // typography
 const Title = styled.h1`
@@ -95,6 +95,34 @@ const MainButton = styled.div`
     cursor: pointer;
 `;
 
+const ActiveButton = styled.div`
+    color: ${COLORS.white};
+    background: ${MAIN_GRADIENT};
+    font-family: ${MAIN_FONT};
+    font-size: 16pt;
+    line-height: 21pt;
+    border-radius: 4pt;
+    padding: 8pt;
+    text-align: center;
+    cursor: pointer;
+    width: 128pt;
+`;
+
+const PassiveButton = styled.div`
+    color: ${COLORS.txt_light_gray};
+    font-family: ${MAIN_FONT};
+    font-size: 16pt;
+    line-height: 21pt;
+    border-radius: 4pt;
+    border: 1pt solid ${COLORS.gray};
+    padding: 8pt;
+    text-align: center;
+    cursor: pointer;
+    width: 128pt;
+`;
+
+
+// other
 const ProgressBar = (percent) => {
     if(percent){
         const progressPercent = {
@@ -119,6 +147,6 @@ const ProgressBar = (percent) => {
 export {
     Title, Label, Paragraph, LightText, WhiteText, WhiteLightText, WhiteVeryLightText,
     MainIcons, MainLine, DropDownArrow,
-    MainButton,
+    MainButton, ActiveButton, PassiveButton,
     ProgressBar
 };
