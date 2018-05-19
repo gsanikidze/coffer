@@ -54,3 +54,26 @@
 .budget_card .text_input{
     margin: 16pt 16pt 0 16pt;
 }
+
+.ivite_friend_popup{
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    border-radius: 4pt;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.ivite_friend_popup .friends{
+    width: 88%;
+    align-self: center;
+}
+
+.ivite_friend_popup .friends div:nth-child(2) div{
+    margin: 8pt 4pt 32pt 0;
+}
+
+.ivite_friend_popup .btn{
+    align-self: center;
+}
