@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 
 
 // my reducers
-import { budgetReducer } from './budgetReducer';
+import { budgetReducer as allBudgets } from './budgetReducer';
+import {userReducer as user} from './userReducer';
 
 
 const rootReducer = combineReducers({
-    budgetReducer
+    allBudgets,
+    user
 })
 
 export default rootReducer;

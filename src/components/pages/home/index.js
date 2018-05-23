@@ -16,9 +16,9 @@ const masonryOptions = {
 
 
 class Home extends Component  {    
-    // componentWillMount(){
-    //     this.props.printAllBudget()
-    // }
+    componentWillMount(){
+        this.props.printAllBudget()
+    }
 
    
     render(){
@@ -30,7 +30,7 @@ class Home extends Component  {
                     options={masonryOptions}
                     disableImagesLoaded={false}
                     updateOnEachImageLoad={false}     
-                > {console.log(this.props)}   
+                >   
                     <div className="card_size">
                         <CreateBudgetButton/>
                     </div>

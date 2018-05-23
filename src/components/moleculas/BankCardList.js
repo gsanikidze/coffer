@@ -6,7 +6,7 @@ import BankCard from './bankCard';
 class BankCardList extends Component{
    render(){
         return (
-            <div id="friend_list">
+            <div id="card_list">
                 <BankCard />
             </div>
         )

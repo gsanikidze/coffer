@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // my comp
+import AuthPage from './components/pages/Auth';
 import Home from './components/pages/Home';
 import BudgetItem from './components/pages/BudgetItem';
 import CreateBudget from './components/pages/CreateBudget';
@@ -11,6 +12,7 @@ import PageNotFound from './components/pages/404';
 const MainRouter = () => {
     return(
         <Switch>
+            <Route exact path="/auth" component={AuthPage}/>
             <Route exact path="/" component={Home}/>
             <Route exact path="/budget" component={BudgetItem}/>
             <Route exact path="/create-budget" component={CreateBudget}/>

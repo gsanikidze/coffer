@@ -9,6 +9,21 @@ function printAllBudget(){
     }
 }
 
+function logIn(user){
+    return{
+        type: 'LOG_IN',
+        payload: user
+    }
+}
+
+function logOut(){
+    return{
+        type: 'LOG_OUT'
+    }
+}
+
 export {
-    printAllBudget
+    printAllBudget,
+    logIn,
+    logOut
 }

@@ -20,3 +20,8 @@ yarn-error.log*
 
 # configuration files
 src/CONFIG.js
+
+# architecture
+Architecture.xmind
+Database_Architecture.xmind
+
