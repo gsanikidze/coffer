@@ -36,9 +36,9 @@ class bankCardList extends Component {
             let cardsArray = Object.values(this.state.cards);
             let cardListDom = [];
             
-            cardsArray.forEach(card => {
+            cardsArray.forEach((card, i) => {
                 cardListDom.push(
-                    <BankCard card_holder={card.card_holder} card_number={card.card_number} card_exp_mont={card.card_exp_mont} card_exp_year={card.card_exp_year}/>
+                    <BankCard key={i} card_holder={card.card_holder} card_number={card.card_number} card_exp_mont={card.card_exp_mont} card_exp_year={card.card_exp_year}/>
                 )
             });
             this.setState({
@@ -56,11 +56,7 @@ class bankCardList extends Component {
     // }
 
     render() {
-        return (
-            <div>               
-                {this.state.cardListDom}
-            </div>
-        );
+        return this.state.cardListDom
     }
 }
 

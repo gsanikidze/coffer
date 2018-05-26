@@ -47,6 +47,8 @@ class Auth extends Component {
         })
 
         sessionStorage.setItem('uid', JSON.stringify(this.state.uid));
+        sessionStorage.setItem('displayName', JSON.stringify(this.state.displayName));
+        sessionStorage.setItem('photoURL', JSON.stringify(this.state.photoURL));
         sessionStorage.setItem('token', JSON.stringify(this.state.token));
 
         this.props.logInAction(this.state);

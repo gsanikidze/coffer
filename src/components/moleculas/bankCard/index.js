@@ -12,8 +12,6 @@ import bullets_white_icon from '../../../img/icons/bullets_white.svg'
 const BankCard = (props) => {
 
     const Card = styled.div`
-        width: 100%;
-        height: 112pt;
         border-radius: ${MAIN_RADIUS};
         background: ${COLORS.primary};
         background: -moz-linear-gradient(-45deg, ${COLORS.primary} 0%, ${COLORS.secondary} 100%);

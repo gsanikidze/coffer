@@ -33,14 +33,14 @@ line-height: 21pt;
 const LightText = styled.p`
 color: ${COLORS.txt_light_gray};
 font-family: ${MAIN_FONT};
-font-size: 16pt;
+font-size: 14pt;
 line-height: 21pt;
 `;
 
 const WhiteText = styled.p`
 color: ${COLORS.white};
 font-family: ${MAIN_FONT};
-font-size: 16pt;
+font-size: 14pt;
 font-weight: 500;
 line-height: 21pt;
 `;
@@ -48,7 +48,7 @@ line-height: 21pt;
 const WhiteLightText = styled.p`
 color: ${COLORS.white};
 font-family: ${MAIN_FONT};
-font-size: 16pt;
+font-size: 14pt;
 line-height: 21pt;
 opacity: 0.88;
 `;
@@ -56,7 +56,7 @@ opacity: 0.88;
 const WhiteVeryLightText = styled.p`
 color: ${COLORS.white};
 font-family: ${MAIN_FONT};
-font-size: 16pt;
+font-size: 12pt;
 line-height: 21pt;
 opacity: 0.64;
 `;
