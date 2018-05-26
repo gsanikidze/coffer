@@ -54,7 +54,12 @@
     grid-template-columns: 4fr 1fr;
 }
 
-#sidebar #cards img{
+#sidebar #cards .link{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#sidebar #cards .invite_friend{
     margin: 0 0 16pt 0;
     justify-self: end;
 }

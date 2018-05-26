@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Redirect } from 'react-router-dom';
 
 // my comp
-import { firebase } from '../../../CONFIG';
+import { firebase, firebaseDB } from '../../../CONFIG';
+import { checkAuth } from './checkAuth';
 import { logIn as logInAction, logOut as logOutAction } from '../../../actions';
+import './style.css';
+import { logOut } from './logOut'
  
 
 class Auth extends Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = {
+            uid: undefined,
+            displayName: undefined,
+            photoURL: undefined,
+            token: undefined,
+            userAuthorized: false,
+        };
         this.logIn = this.logIn.bind(this);
-        this.logOut = this.logOut.bind(this);
     }
 
     logIn(){
@@ -20,30 +29,42 @@ class Auth extends Component {
         provider.addScope('profile');
         provider.addScope('email');
         firebase.auth().signInWithPopup(provider).then((result) => {
-        const user = result.user;
-        this.props.logInAction(user);
-        console.log(this.props);
+            
+        this.setState({
+            uid: result.user.uid,
+            displayName: result.user.displayName,
+            photoURL: result.user.photoURL,
+            token: result.credential.accessToken,
+            userAuthorized: true
+        })
+        
+        const user = this.state;
+
+        firebaseDB.ref(`users/${user.uid}`).set({
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            token: user.token
+        })
+
+        sessionStorage.setItem('uid', JSON.stringify(this.state.uid));
+        sessionStorage.setItem('token', JSON.stringify(this.state.token));
+
+        this.props.logInAction(this.state);
         }); 
     }
 
-    logOut(){
-        firebase.auth().signOut().then(() => {
-            this.props.logOutAction();
-            console.log(this.props);
-          }, function(error) {
-            console.log(error);
-        });
-    }
-    
-
     componentDidMount(){
-        console.log('prop :', this.props);
+        checkAuth().then((value) => {
+            this.setState({
+                userAuthorized: value
+            })
+        })
     }
 
     render() {
         return (
             <div>
-                {this.props.reduxData.user.user ? <button onClick={this.logOut}> Log Out </button> : <button onClick={this.logIn}> Log In </button>}
+                {this.state.userAuthorized ? <Redirect to="/" /> : <button onClick={this.logIn} id="log_in_page"> Log In </button>}
             </div>
         );
     }
@@ -59,7 +80,5 @@ const mapDispatchToProps = (dispatch) => {
         logOutAction
     }, dispatch)
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

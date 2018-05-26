@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { css } from 'glamor';
+import { Redirect } from 'react-router-dom';
 
 // my comp
 import Routes from './routes';
 import Sidebar from './components/organizms/sidebar';
+import {checkAuth} from './components/pages/Auth/checkAuth'
 
 let grid_layout = css({
   display: 'grid',
@@ -32,6 +34,10 @@ class App extends Component {
 
   componentDidMount(){
       this.printSidebarWidth()
+  }
+
+  authRouter(){
+    
   }
 
   render() {

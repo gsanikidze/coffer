@@ -4,10 +4,11 @@ export function userReducer(state = [], action){
                 return {
                     ...state,
                     user: {
-                        user: action.payload,
-                        id: action.payload.uid,
-                        displayName: action.payload.displayName,
-                        photoURL: action.payload.photoURL
+                        uid: action.payload.user.uid,
+                        displayName: action.payload.user.displayName,
+                        photoURL: action.payload.user.photoURL,
+                        token: action.payload.user.token,
+                        userAuthorized: action.payload.user.userAuthorized
                     }
                 };
         case 'LOG_OUT':

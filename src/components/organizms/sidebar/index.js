@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'glamor';
+import { Redirect, Link } from 'react-router-dom';
 
 // style
 import './sidebar_layout.css';
@@ -18,6 +19,7 @@ import BankCardList from '../../moleculas/BankCardList';
 import { MAIN_SHADOW, COLORS } from '../../UI_VARS';
 import { InputWithLabel } from '../../moleculas/forms/Input';
 import close_window_icon from '../../../img/icons/close.svg';
+import { logOut } from '../../pages/Auth/logOut';
 
 const sidebarLayout = css({
     backgroundColor: COLORS.white,
@@ -34,6 +36,11 @@ class Sidebar extends Component {
         this.state = {
             openSystemInvitationPopup: false
         }
+        this.logMeOut = this.logMeOut.bind(this);
+    }
+
+    logMeOut(){
+        logOut();
     }
 
     render() {
@@ -65,12 +72,11 @@ class Sidebar extends Component {
 
 
 
-
         return (
             <div {...sidebarLayout} id="sidebar">
                 <InviteFriendInSystem openSystemInvitationPopup={this.state.openSystemInvitationPopup}/>
 
-                <MainIcons id="log_out_icon" src={log_out_icon} alt="Log Out"/>
+                <MainIcons onClick={this.logMeOut} id="log_out_icon" src={log_out_icon} alt="Log Out"/>
                     
                 <div id="profile_info">
                     <ProfilePic profilePic={profile_pic} size={64}/>
@@ -92,7 +98,9 @@ class Sidebar extends Component {
 
                 <div id="cards">
                     <Paragraph>Cards</Paragraph>
-                    <MainIcons src={add_gray_icon} alt="Invite Friends"/>
+                    <Link to="add-bank-card" className="link">
+                        <MainIcons src={add_gray_icon} className="invite_friend" alt="Invite Friends"/>
+                    </Link>
                     <div id="card_list">
                         <BankCardList/>
                     </div>

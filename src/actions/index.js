@@ -12,7 +12,7 @@ function printAllBudget(){
 function logIn(user){
     return{
         type: 'LOG_IN',
-        payload: user
+        payload: {user}
     }
 }
 
