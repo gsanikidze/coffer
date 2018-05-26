@@ -9,7 +9,7 @@ import './bank_card_layout.css';
 // imgs
 import bullets_white_icon from '../../../img/icons/bullets_white.svg'
 
-const BankCard = () => {
+const BankCard = (props) => {
 
     const Card = styled.div`
         width: 100%;
@@ -29,15 +29,16 @@ const BankCard = () => {
 
     return(
         <Card className="bank_card_item">
+            {/* {console.log(props)} */}
             <div className="card_top">
-                <WhiteText> N. Surname </WhiteText>
+                <WhiteText>{props.card_holder}</WhiteText>
                 <Bullets src={bullets_white_icon} alt="Edit Card"/>
             </div>
             <div className="card_number">
-                <WhiteLightText> **** - **** - **** - 4787 </WhiteLightText>
+                <WhiteLightText>{props.card_number}</WhiteLightText>
             </div>
             <div className="card_date">
-                <WhiteVeryLightText> 1/20 </WhiteVeryLightText>
+                <WhiteVeryLightText>{props.card_exp_mont + "/" + props.card_exp_year}</WhiteVeryLightText>
             </div>
         </Card>
     )

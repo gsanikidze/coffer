@@ -15,7 +15,7 @@ import profile_pic from '../../../img/profile_pics/profile_pic.jpg';
 import { MainIcons, Label, MainLine, Paragraph, DropDownArrow, ActiveButton } from '../../UI_ATOMS';
 import ProfilePic from '../../moleculas/ProfilePic';
 import FriendsList from '../../moleculas/FriendsList';
-import BankCardList from '../../moleculas/BankCardList';
+import BankCardList from '../../moleculas/bankCard/bankCardList';
 import { MAIN_SHADOW, COLORS } from '../../UI_VARS';
 import { InputWithLabel } from '../../moleculas/forms/Input';
 import close_window_icon from '../../../img/icons/close.svg';
