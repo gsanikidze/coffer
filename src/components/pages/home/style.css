@@ -5,8 +5,6 @@
 .card_size{
     margin-right: 16pt;
     margin-bottom: 16pt;
-    height: auto;
-    max-width: 283pt;
-    min-width: 224pt;
-    width: 47%;
+    min-width: 270pt;
+    width: 30%;
 }
