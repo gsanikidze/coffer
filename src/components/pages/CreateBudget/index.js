@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
+import { firebaseDB } from '../../../CONFIG';
 
 
 // my comp
@@ -9,7 +11,6 @@ import { InputWithLabel } from '../../moleculas/forms/Input';
 import Breadcrumbs from '../../moleculas/Breadcrumbs';
 import FriendList from '../../moleculas/FriendsList';
 import './style.css';
-import product_image from '../../../img/product_pics/triumphBonneville.JPG';
 
 class CreateBudget extends Component {
 
@@ -17,7 +18,7 @@ class CreateBudget extends Component {
         super(props);
 
         this.state = {
-            key: 0,
+            redirect: false,
             border: 'none',
             coverImages: [],
             coverImagesURL: [],
@@ -26,12 +27,12 @@ class CreateBudget extends Component {
                 price: undefined,
                 friends: undefined,
                 cover: undefined
-            },
-            searchedFriends: []
+            }
         }
 
         this.onFormChange = this.onFormChange.bind(this)
         this.selectCover = this.selectCover.bind(this)
+        this.createBudget = this.createBudget.bind(this)
     }
 
     onFormChange(event){
@@ -113,38 +114,28 @@ class CreateBudget extends Component {
             }
         })
         
-        const style = {
-            border: '1px solid red'
-        }
 
         e.target.style.border = `2px solid ${COLORS.primary}`
-        //console.log(this.state.coverImages[0].props.style)
     }
 
-    // onEnter(e){
-    //     if(e.key === 'Enter'){
-    //         let searchedFriends = [];
-    //         this.setState({key:  this.state.key + 1});
-    //         searchedFriends.push(<p key={this.state.key}>{this.state.budgetInfo.friends}</p>);
-    //         this.setState({
-    //             ...this.state,
-    //             searchedFriends,
-    //             budgetInfo: {
-    //                 ...this.state.budgetInfo,
-    //                 friends: undefined
-    //             }
-                
-    //         })
-    //     }     
-    // }
+    createBudget(){
+        const localUid = JSON.parse(sessionStorage.getItem('uid'))
+        const localToken = JSON.parse(sessionStorage.getItem('token'))
 
-    componentDidMount(){
-        //this.searchedImages();
+        if(localUid && localToken){
+            firebaseDB.ref(`budgets/${localUid}`).push(this.state.budgetInfo)
+                .then(() => this.setState({redirect: true}))
+        }
 
+        console.log(this.state.budgetInfo)
     }
-
 
     render() {
+
+        if (this.state.redirect) {
+            return <Redirect to='/'/>;
+        }
+
         return (
             <form id="create_budget" onChange={this.onFormChange}>
                 <Breadcrumbs />
@@ -157,13 +148,6 @@ class CreateBudget extends Component {
                     </div>
                     <div id="share_with_friends">
                         <InputWithLabel name="share_with_friends" id="invite_friend" onKeyPress={this.onEnter} label="Share Budget With" placeHolder="type person email"/>
-                        {/* {
-                            document.addEventListener('keypress', (event) => {
-                                this.onEnter(event)
-                                return this.state.searchedFriends
-                                })
-                            })
-                        } */}
                     </div>
                     <div id="cover_photo">
                         <InputWithLabel name="cover_photo" label="Cover Photo" placeHolder="search photo"/>
@@ -172,8 +156,10 @@ class CreateBudget extends Component {
                         </div>
                     </div>
                     <div id="buttons">
-                        <PassiveButton> Cancell </PassiveButton>
-                        <ActiveButton> Create Budget </ActiveButton>
+                        <Link to="/">
+                            <PassiveButton>  Cancell  </PassiveButton>
+                        </Link>
+                        <ActiveButton onClick={this.createBudget}> Create Budget </ActiveButton>
                     </div>
 
                 </div>
