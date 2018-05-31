@@ -126,8 +126,6 @@ class CreateBudget extends Component {
             firebaseDB.ref(`budgets/${localUid}`).push(this.state.budgetInfo)
                 .then(() => this.setState({redirect: true}))
         }
-
-        console.log(this.state.budgetInfo)
     }
 
     render() {

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-component';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { firebaseDB } from '../../../CONFIG'
 
 // my comp
 import './style.css';
@@ -15,9 +17,50 @@ const masonryOptions = {
 
 
 
-class Home extends Component  {    
+class Home extends Component  {   
+    constructor(props){
+        super(props)
+
+        this.state = {
+            budgets: [],
+            budgetDivs: [],
+            loading: true
+        }
+    }
+    
+
     componentWillMount(){
-        this.props.printAllBudget()
+        const localUid = JSON.parse(sessionStorage.getItem('uid'))
+        const localToken = JSON.parse(sessionStorage.getItem('token'))
+
+        if(localUid && localToken){
+            firebaseDB.ref(`budgets/${localUid}`).once('value')
+            .then(snapshot => {
+                const items = []
+                snapshot.forEach(item => {
+                    items.push(item.val())
+                })
+                this.setState({
+                    budgets: items
+                })
+                //console.log(this.state.budgets)
+            })
+            .then(() => {
+                let budgetListDivs = []
+                this.state.budgets.map((e, i) => {
+                    budgetListDivs.push(<div className="card_size" key={i}><BudgetCard cover={e.cover} percent={Math.random() * 100} title={e.title} price={e.price} /></div> )
+                })
+                this.setState({
+                    budgetDivs: budgetListDivs
+                })
+            })
+            .then(() => {
+                this.setState({
+                    loading: false
+                })
+                this.props.printAllBudget()
+            })
+        }
     }
 
    
@@ -32,30 +75,11 @@ class Home extends Component  {
                     updateOnEachImageLoad={false}     
                 >   
                     <div className="card_size">
-                        <CreateBudgetButton/>
+                        <Link to='/create-budget'>
+                            <CreateBudgetButton/>
+                        </Link>
                     </div>
-                    <div className="card_size">
-                        <BudgetCard/>
-                    </div>
-                    <div className="card_size">
-                        <BudgetCard/>
-                    </div>
-                    <div className="card_size">
-                        <BudgetCard/>
-                    </div>
-                    <div className="card_size">
-                        <BudgetCard/>
-                    </div>
-                    <div className="card_size">
-                        <BudgetCard/>
-                    </div>
-                    <div className="card_size">
-                        <BudgetCard/>
-                    </div>
-                    <div className="card_size">
-                        <BudgetCard/>
-                    </div>
-                    
+                    {this.state.budgetDivs}                  
                 </Masonry>
             </div>
         )

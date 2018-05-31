@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 // my comp
@@ -25,7 +26,7 @@ const Breadcrumbs = () => {
     return (
         <BreadcrumbsContainer>
             <LightText>
-                Home / Product Name
+                <Link to='/'>Home</Link> / Product Name
             </LightText>
         </BreadcrumbsContainer>
     );

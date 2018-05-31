@@ -13,8 +13,8 @@ const TextInputFieldStyle = {
     fontFamily: MAIN_FONT,
 }
 
-const InputField = (props) => {
-    return <input name={props.name} style={TextInputFieldStyle} placeholder={props.placeHolder || "Placeholder"} type="text" className="text_input_field"/>
+const InputField = (placeholder) => {
+    return <input style={TextInputFieldStyle} placeholder={placeholder || "Placeholder"} type="text" className="text_input_field"/>
 };
 
 const NumberInput = (props) => {
@@ -22,7 +22,7 @@ const NumberInput = (props) => {
         <div className="text_input">
             <img src={us_dollar_icon} alt="Currency" className="us_dollar_icon"/>
             <div className="line" style={{backgroundColor: COLORS.dark_gray}}></div>
-            {InputField(props)}
+            {InputField(props.placeholder)}
             <img src={submit_icon} alt="Submit Money" className="submit_icon"/>
         </div>
     )

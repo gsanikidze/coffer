@@ -20,7 +20,10 @@ class BudgetCard extends Component{
 
         this.state = {
             openInvitationPopup: false,
-            percent: 87
+            cover: this.props.cover,
+            percent: this.props.percent,
+            title: this.props.title,
+            moneyNeeded: this.props.price
         }
     }
 
@@ -40,7 +43,7 @@ class BudgetCard extends Component{
             return <MainButton className="transfer_money_btn">Transfer Money</MainButton>
         } else {
             return (
-                <NumberInput />
+                <NumberInput placeholder={this.state.moneyNeeded}/>
             )
         }
     }
@@ -100,10 +103,10 @@ class BudgetCard extends Component{
                             this.state.percent === 100 ? <MainIcons src={budget_is_done_icon}/> : null
                         }
                         <Title>
-                            Budget Title
+                            {this.state.title}
                         </Title>
                     </div>
-                    {this.withImageOrNot(bike_photo)}  
+                    {this.withImageOrNot(this.state.cover)}  
                     {this.budgetIsFull(this.state.percent)}  
                     {ProgressBar(this.state.percent)}
                     <div className="brick"></div>
