@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 // my comp
 import { MAIN_SHADOW } from '../../UI_VARS';
@@ -98,14 +99,16 @@ class BudgetCard extends Component{
                             <MainIcons src={bullets_gray_icon} />
                         </div>
                     </div>
-                    <div className="title">
-                        {
-                            this.state.percent === 100 ? <MainIcons src={budget_is_done_icon}/> : null
-                        }
-                        <Title>
-                            {this.state.title}
-                        </Title>
-                    </div>
+                    <Link to={this.props.link}>
+                        <div className="title">
+                            {
+                                this.state.percent === 100 ? <MainIcons src={budget_is_done_icon}/> : null
+                            }
+                            <Title>
+                                {this.state.title}
+                            </Title>
+                        </div>
+                    </Link>
                     {this.withImageOrNot(this.state.cover)}  
                     {this.budgetIsFull(this.state.percent)}  
                     {ProgressBar(this.state.percent)}

@@ -51,7 +51,7 @@ class Home extends Component  {
             .then(() => {
                 let budgetListDivs = []
                 this.state.budgets.map((e, i) => {
-                    budgetListDivs.push(<Link to={`/budget-${this.state.budgetsId[i]}`} key={i}><div className="card_size"><BudgetCard cover={e.cover} percent={Math.random() * 100} title={e.title} price={e.price} /></div></Link> )
+                    budgetListDivs.push(<div key={i} className="card_size"><BudgetCard link={`/budget-${this.state.budgetsId[i]}`} cover={e.cover} percent={Math.random() * 100} title={e.title} price={e.price} /></div>)
                 })
                 this.setState({
                     budgetDivs: budgetListDivs
