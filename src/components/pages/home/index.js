@@ -24,6 +24,7 @@ class Home extends Component  {
         this.state = {
             budgets: [],
             budgetDivs: [],
+            budgetsId: [],
             loading: true
         }
     }
@@ -37,18 +38,20 @@ class Home extends Component  {
             firebaseDB.ref(`budgets/${localUid}`).once('value')
             .then(snapshot => {
                 const items = []
+                const itemsId = []
                 snapshot.forEach(item => {
-                    items.push(item.val())
+                    items.push(item.val()) 
+                    itemsId.push(item.key)
                 })
                 this.setState({
-                    budgets: items
+                    budgets: items,
+                    budgetsId: itemsId
                 })
-                //console.log(this.state.budgets)
             })
             .then(() => {
                 let budgetListDivs = []
                 this.state.budgets.map((e, i) => {
-                    budgetListDivs.push(<div className="card_size" key={i}><BudgetCard cover={e.cover} percent={Math.random() * 100} title={e.title} price={e.price} /></div> )
+                    budgetListDivs.push(<Link to={`/budget-${this.state.budgetsId[i]}`} key={i}><div className="card_size"><BudgetCard cover={e.cover} percent={Math.random() * 100} title={e.title} price={e.price} /></div></Link> )
                 })
                 this.setState({
                     budgetDivs: budgetListDivs

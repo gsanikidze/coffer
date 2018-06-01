@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { COLORS } from '../UI_VARS';
 import { LightText } from '../UI_ATOMS';
 
-const Breadcrumbs = () => {
+const Breadcrumbs = (props) => {
 
     
     let BreadcrumbsContainer = styled.div`
@@ -26,7 +26,7 @@ const Breadcrumbs = () => {
     return (
         <BreadcrumbsContainer>
             <LightText>
-                <Link to='/'>Home</Link> / Product Name
+                <Link to='/'>Home</Link> / {props.pageName}
             </LightText>
         </BreadcrumbsContainer>
     );

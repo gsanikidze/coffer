@@ -13,8 +13,20 @@ const TextInputFieldStyle = {
     fontFamily: MAIN_FONT,
 }
 
-const InputField = (placeholder) => {
-    return <input style={TextInputFieldStyle} placeholder={placeholder || "Placeholder"} type="text" className="text_input_field"/>
+const InputField = (props) => {
+    let placeholder, name
+
+    if(props){
+        if(typeof(props) === 'string'){
+            placeholder = props
+        } else {
+            placeholder = props.placeHolder
+            name = props.name
+        }
+    }
+
+     
+    return <input style={TextInputFieldStyle} name={name} placeholder={placeholder || "Placeholder"} type="text" className="text_input_field"/> 
 };
 
 const NumberInput = (props) => {

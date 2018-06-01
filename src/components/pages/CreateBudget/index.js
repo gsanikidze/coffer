@@ -36,7 +36,7 @@ class CreateBudget extends Component {
     }
 
     onFormChange(event){
-        let value = event.target.value.toUpperCase();
+        let value = event.target.value
         let input_name = event.target.name
         switch (input_name) {
             case 'budget_title':
@@ -136,7 +136,7 @@ class CreateBudget extends Component {
 
         return (
             <form id="create_budget" onChange={this.onFormChange}>
-                <Breadcrumbs />
+                <Breadcrumbs pageName="Create Budget" />
                 <div className="container">
                     <Title id="title">Create Budget</Title>
 

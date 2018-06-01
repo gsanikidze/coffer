@@ -43,7 +43,7 @@ class MainRouter extends Component {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/auth" component={AuthPage}/>
-                <Route exact path="/budget" component={BudgetItem}/>
+                <Route exact path="/budget-:id" component={BudgetItem}/>
                 <Route exact path="/create-budget" component={CreateBudget}/>
                 <Route exact path="/add-bank-card" component={AddBankCard}/>
                 <Route exact component={PageNotFound}/>
