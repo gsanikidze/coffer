@@ -64,6 +64,7 @@ class Auth extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div>
                 {this.state.userAuthorized ? <Redirect to="/" /> : <button onClick={this.logIn} id="log_in_page"> Log In </button>}
