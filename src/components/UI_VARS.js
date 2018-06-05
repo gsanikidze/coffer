@@ -16,12 +16,14 @@ const COLORS = {
 
 const MAIN_SHADOW = '0 4pt 16pt 0px rgba(0,0,0,0.05)';
 
+const HOVER_SHADOW = '0 8pt 24pt 0px rgba(0,0,0,0.15)';
+
 const MAIN_GRADIENT = `linear-gradient(45deg, ${COLORS.primary}, ${COLORS.secondary});`;
 
 const MAIN_FONT = '"Segoe UI", Helvetica, Arial, sans-serif';
 
 const MAIN_RADIUS = '4pt'; 
 
-export {COLORS, MAIN_SHADOW, MAIN_GRADIENT, MAIN_FONT, MAIN_RADIUS};
+export {COLORS, MAIN_SHADOW, HOVER_SHADOW, MAIN_GRADIENT, MAIN_FONT, MAIN_RADIUS};
 
 

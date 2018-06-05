@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 
 // my comp
-import { MAIN_SHADOW } from '../../UI_VARS';
+import { MAIN_SHADOW, HOVER_SHADOW } from '../../UI_VARS';
 import { Title, MainIcons, MainButton, ProgressBar, ActiveButton } from '../../UI_ATOMS';
 import add_gray_icon from '../../../img/icons/add_gray.svg'
 import bullets_gray_icon from '../../../img/icons/bullets_gray.svg'
@@ -63,6 +63,11 @@ class BudgetCard extends Component{
         background: white;
         border-radius: 4pt;
         box-shadow: ${MAIN_SHADOW};
+        &:hover {
+            box-shadow: ${HOVER_SHADOW};
+            -webkit-transition: box-shadow 0.5s;
+            transition: box-shadow 0.5s;
+        }
         `;
         
 

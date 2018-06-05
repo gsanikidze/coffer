@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // my comp
-import { MAIN_SHADOW } from '../UI_VARS';
+import { MAIN_SHADOW, HOVER_SHADOW } from '../UI_VARS';
 import { Label, MainIcons } from '../UI_ATOMS';
 import add_blue_icon from '../../img/icons/add_blue.svg'
 
@@ -18,6 +18,11 @@ const CreateBudgetButton = (props) => {
         border-radius: 4pt;
         box-shadow: ${MAIN_SHADOW};
         cursor: pointer;
+        &:hover {
+            box-shadow: ${HOVER_SHADOW};
+            -webkit-transition: box-shadow 0.5s;
+            transition: box-shadow 0.5s;
+        }
     `;
 
     return(
