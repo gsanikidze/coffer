@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { loading } from '../../../actions'
+import Loading from '../lodaing'
  
 class bankCardList extends Component {
     constructor(props){
@@ -12,7 +13,8 @@ class bankCardList extends Component {
         this.state = {
             cards: {},
             cardsComps: [],
-            cardListDom: []
+            cardListDom: [],
+            loading: true
         }
         this.getDataFromFirebase = this.getDataFromFirebase.bind(this);
         this.printCardList = this.printCardList.bind(this);
@@ -31,8 +33,9 @@ class bankCardList extends Component {
                     })
                 }).then(() => {
                     this.printCardList()
-                    this.props.loading(false)
-                    console.log(this.props)
+                    this.setState({
+                        loading: false
+                    })
                 })
         }
     }
@@ -62,7 +65,11 @@ class bankCardList extends Component {
     // }
 
     render() {
-        return this.state.cardListDom
+        return(
+            <div>
+                {this.state.loading ? <Loading sidebar/> : this.state.cardListDom}
+            </div>
+        )
     }
 }
 

@@ -4,16 +4,16 @@ import styled from 'styled-components'
 // my comp
 import { COLORS } from '../UI_VARS'
 
-function Loading() {
+function Loading(props) {
     let ContainerDiv = styled.div`
-        height: 100vh;
+        height: ${props.sidebar ? '50vh' : '100vh'};
         display: flex;
         align-items: center;
     `
     let LodingAnimation = styled.div`
         margin: 0 auto;
-        border: 8px solid ${COLORS.dark_gray}; 
-        border-top: 8px solid ${COLORS.primary};
+        border: ${props.sidebar ? '4px' : '8px'} solid ${COLORS.dark_gray}; 
+        border-top: ${props.sidebar ? '4px' : '8px'} solid ${COLORS.primary};
         border-radius: 50%;
         width: 60px;
         height: 60px;
