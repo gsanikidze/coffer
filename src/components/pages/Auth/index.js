@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router-dom';
+import styled from 'styled-components'
 
 // my comp
 import Home from '../Home'
@@ -10,6 +11,9 @@ import {checkAuth} from './checkAuth';
 import {logIn as logInAction, logOut as logOutAction} from '../../../actions';
 import './style.css';
 import {logOut} from './logOut'
+import { MAIN_GRADIENT } from '../../UI_VARS'
+import { Title, ActiveButton } from '../../UI_ATOMS'
+import backgroundImage from '../../../img/log-in.jpeg'
 
 class Auth extends Component {
     constructor(props) {
@@ -67,14 +71,45 @@ class Auth extends Component {
     }
 
     render() {
-        console.log(this.props)
+
+        const Container = styled.div`
+            background-image: url(${backgroundImage});
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        `
+        const GradientDiv = styled.div`
+            background: ${MAIN_GRADIENT};
+            height: 100vh;
+            opacity: 0.32;
+        `
+        const ActionDiv = styled.div`
+            position: absolute;
+            height: 100vh;
+            z-index: 99;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    `
+
         return (
             <div>
                 {this.state.userAuthorized
                     ? this.getContent()
-                    : <button onClick={this.logIn} id="log_in_page">
-                        Log In
-                    </button>}
+                    : 
+                    <Container>
+                        <ActionDiv>
+                            <div id='dialog'>
+                                <Title>Log In</Title>
+                                <ActiveButton onClick={this.logIn} id="log_in_btn">
+                                    With Google
+                                </ActiveButton>
+                            </div>
+                        </ActionDiv>
+                        <GradientDiv/>
+                    </Container>
+                    }
             </div>
         );
     }

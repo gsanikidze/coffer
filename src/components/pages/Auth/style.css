@@ -1,3 +1,14 @@
-#log_in_page{
-    
+#dialog{
+    background-color: white;
+    width: 304pt;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 32pt;
+    padding-bottom: 64px;
+    align-items: center;
+    justify-content: center;
+}
+#log_in_btn{
+    margin-top: 24pt;
 }
