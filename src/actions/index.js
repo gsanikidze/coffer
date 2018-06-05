@@ -22,8 +22,16 @@ function logOut(){
     }
 }
 
+function loading(status){
+    return{
+        type: "LOADING",
+        payload: status
+    }
+}
+
 export {
     printAllBudget,
     logIn,
-    logOut
+    logOut,
+    loading
 }

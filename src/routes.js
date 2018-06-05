@@ -7,6 +7,7 @@ import Home from './components/pages/Home';
 import BudgetItem from './components/pages/BudgetItem';
 import CreateBudget from './components/pages/CreateBudget';
 import AddBankCard from './components/pages/AddBankCard';
+import Loading from './components/moleculas/lodaing'
 import PageNotFound from './components/pages/404';
 
 import { firebase } from './CONFIG'
@@ -46,6 +47,7 @@ class MainRouter extends Component {
                 <Route exact path="/budget-:id" component={BudgetItem}/>
                 <Route exact path="/create-budget" component={CreateBudget}/>
                 <Route exact path="/add-bank-card" component={AddBankCard}/>
+                <Route exact path="/loading" component={Loading}/>
                 <Route exact component={PageNotFound}/>
             </Switch>
         ) 

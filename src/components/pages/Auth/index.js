@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Redirect } from 'react-router-dom';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {Redirect} from 'react-router-dom';
 
 // my comp
-import { firebase, firebaseDB } from '../../../CONFIG';
-import { checkAuth } from './checkAuth';
-import { logIn as logInAction, logOut as logOutAction } from '../../../actions';
+import Home from '../Home'
+import {firebase, firebaseDB} from '../../../CONFIG';
+import {checkAuth} from './checkAuth';
+import {logIn as logInAction, logOut as logOutAction} from '../../../actions';
 import './style.css';
-import { logOut } from './logOut'
- 
+import {logOut} from './logOut'
 
 class Auth extends Component {
     constructor(props) {
@@ -19,47 +19,50 @@ class Auth extends Component {
             displayName: undefined,
             photoURL: undefined,
             token: undefined,
-            userAuthorized: false,
+            userAuthorized: false
         };
-        this.logIn = this.logIn.bind(this);
+        this.logIn = this
+            .logIn
+            .bind(this);
     }
 
-    logIn(){
-        const provider = new firebase.auth.GoogleAuthProvider();
+    logIn() {
+        const provider = new firebase
+            .auth
+            .GoogleAuthProvider();
         provider.addScope('profile');
         provider.addScope('email');
-        firebase.auth().signInWithPopup(provider).then((result) => {
-            
-        this.setState({
-            uid: result.user.uid,
-            displayName: result.user.displayName,
-            photoURL: result.user.photoURL,
-            token: result.credential.accessToken,
-            userAuthorized: true
-        })
-        
-        const user = this.state;
+        firebase
+            .auth()
+            .signInWithPopup(provider)
+            .then((result) => {
 
-        firebaseDB.ref(`users/${user.uid}`).set({
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-            token: user.token
-        })
+                this.setState({uid: result.user.uid, displayName: result.user.displayName, photoURL: result.user.photoURL, token: result.credential.accessToken, userAuthorized: true})
 
-        sessionStorage.setItem('uid', JSON.stringify(this.state.uid));
-        sessionStorage.setItem('displayName', JSON.stringify(this.state.displayName));
-        sessionStorage.setItem('photoURL', JSON.stringify(this.state.photoURL));
-        sessionStorage.setItem('token', JSON.stringify(this.state.token));
+                const user = this.state;
 
-        this.props.logInAction(this.state);
-        }); 
+                firebaseDB
+                    .ref(`users/${user.uid}`)
+                    .set({displayName: user.displayName, photoURL: user.photoURL, token: user.token})
+
+                sessionStorage.setItem('uid', JSON.stringify(this.state.uid));
+                sessionStorage.setItem('displayName', JSON.stringify(this.state.displayName));
+                sessionStorage.setItem('photoURL', JSON.stringify(this.state.photoURL));
+                sessionStorage.setItem('token', JSON.stringify(this.state.token));
+
+                this
+                    .props
+                    .logInAction(this.state);
+            })
     }
 
-    componentDidMount(){
+    getContent(){
+        window.location.reload(true)   
+    }
+
+    componentDidMount() {
         checkAuth().then((value) => {
-            this.setState({
-                userAuthorized: value
-            })
+            this.setState({userAuthorized: value})
         })
     }
 
@@ -67,15 +70,17 @@ class Auth extends Component {
         console.log(this.props)
         return (
             <div>
-                {this.state.userAuthorized ? <Redirect to="/" /> : <button onClick={this.logIn} id="log_in_page"> Log In </button>}
+                {this.state.userAuthorized
+                    ? this.getContent()
+                    : <button onClick={this.logIn} id="log_in_page">
+                        Log In
+                    </button>}
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => ({
-    reduxData: state
-})
+const mapStateToProps = (state) => ({reduxData: state})
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({

@@ -76,7 +76,7 @@ class AddBankCard extends Component {
     render() {
         return (
             <form id="add_bank_card" onChange={this.onFormChange}>
-                <Breadcrumbs />
+                <Breadcrumbs pageName="Add Budget"/>
                 <div className="container">
                     <Title id="title">Add Bank Card</Title>
                     

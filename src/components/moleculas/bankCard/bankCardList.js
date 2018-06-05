@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import BankCard from './index';
 import { firebaseDB } from '../../../CONFIG'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
+import { loading } from '../../../actions'
+ 
 class bankCardList extends Component {
     constructor(props){
         super(props)
@@ -27,6 +31,8 @@ class bankCardList extends Component {
                     })
                 }).then(() => {
                     this.printCardList()
+                    this.props.loading(false)
+                    console.log(this.props)
                 })
         }
     }
@@ -60,4 +66,12 @@ class bankCardList extends Component {
     }
 }
 
-export default bankCardList;
+const mapStateToProps = (state) => ({reduxData: state})
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        loading
+    }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(bankCardList);

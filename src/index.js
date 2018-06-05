@@ -28,7 +28,7 @@ ReactDOM.render(
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )}> 
         <BrowserRouter> 
-            <Auth />
+            {Auth()}
         </BrowserRouter>
     </Provider>
     ,document.getElementById('root'));
