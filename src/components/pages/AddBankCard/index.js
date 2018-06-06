@@ -69,6 +69,7 @@ class AddBankCard extends Component {
     }
     renderRedirect= () => {
         if(this.state.redirect){
+            window.location.reload(true)
             return <Redirect to='/'/>
         }
     }
