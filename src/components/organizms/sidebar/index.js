@@ -41,7 +41,8 @@ class Sidebar extends Component {
     }
 
     logMeOut(){
-        logOut();
+        logOut()
+        window.location.reload(true)
     }
 
     render() {
