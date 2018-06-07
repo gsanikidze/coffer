@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {firebaseDB} from '../../../CONFIG'
+import { Redirect } from 'react-router-dom'
 
 // my comp
 import Breadcrumbs from '../../moleculas/Breadcrumbs';
@@ -31,7 +32,8 @@ class BudgetItem extends Component {
             price: null,
             productImg: {
                 backgroundImage: ''
-            }
+            },
+            budgetId: ''
         }
 
         this.showMenu = this
@@ -49,6 +51,7 @@ class BudgetItem extends Component {
         (function (self) {
             const localUid = JSON.parse(sessionStorage.getItem('uid'))
             const budgetId = self.props.match.params.id
+            self.setState({budgetId})
             if (localUid) {
                 let title,
                     cover,
@@ -59,17 +62,22 @@ class BudgetItem extends Component {
                     .ref(`budgets/${localUid}/${budgetId}`)
                     .once('value')
                     .then(snapshot => {
-                        title = snapshot
-                            .val()
-                            .title
-                        cover = snapshot
-                            .val()
-                            .cover
-                        price = snapshot
-                            .val()
-                            .price
-                        productImg = {
-                            backgroundImage: `url(${cover})`
+                        if (snapshot.val() !== null) {
+                            title = snapshot
+                                .val()
+                                .title
+                            cover = snapshot
+                                .val()
+                                .cover
+                            price = snapshot
+                                .val()
+                                .price
+                            productImg = {
+                                backgroundImage: `url(${cover})`
+                            }
+                        }
+                        else {
+                            window.location.replace('/')
                         }
                     })
                     .then(() => {
@@ -97,7 +105,7 @@ class BudgetItem extends Component {
                                 <MainIcons src={bullets_gray_icon} onClick={this.showMenu} id="edit_budget"/>
                             </div>
                             {this.state.showMenu
-                                ? <DropDown/>
+                                ? <DropDown budgetDbId={this.state.budgetId} page='budget' itemsType='budgets'/>
                                 : null
 }
                             <Title id="title">{this.state.title}</Title>
