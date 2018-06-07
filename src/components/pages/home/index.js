@@ -57,7 +57,11 @@ class Home extends Component {
                                     cover={e.cover}
                                     percent={Math.random() * 100}
                                     title={e.title}
-                                    price={e.price}/></div>
+                                    price={e.price}
+                                    budgetDbId={this.state.budgetsId[i]}
+                                    itemsType='budgets'
+                                    page='home'
+                                    /></div>
                             )
                         })
                     this.setState({budgetDivs: budgetListDivs})

@@ -11,6 +11,7 @@ import {MainIcons, Title, MainLine, ProgressBar, LightText} from '../../UI_ATOMS
 import add_gray_icon from '../../../img/icons/add_gray.svg';
 import bullets_gray_icon from '../../../img/icons/bullets_gray.svg';
 import Loading from '../../moleculas/lodaing'
+import DropDown from '../../moleculas/dropDownMenu.js'
 
 const containerStyle = {
     boxShadow: MAIN_SHADOW,
@@ -79,11 +80,6 @@ class BudgetItem extends Component {
     }
 
     render() {
-        const ulStyle = {
-            background: COLORS.white,
-            boxShadow: MAIN_SHADOW,
-            border: `1pt solid ${COLORS.light_gray}`
-        }
 
         return (
             <div>{this.state.loading
@@ -101,17 +97,7 @@ class BudgetItem extends Component {
                                 <MainIcons src={bullets_gray_icon} onClick={this.showMenu} id="edit_budget"/>
                             </div>
                             {this.state.showMenu
-                                ? (
-                                    <div className="drop_down_menu">
-                                        <ul style={ulStyle}>
-                                            <LightText>
-                                                <li>Edit</li>
-                                                <li>Delete</li>
-                                                <li>Report</li>
-                                            </LightText>
-                                        </ul>
-                                    </div>
-                                )
+                                ? <DropDown/>
                                 : null
 }
                             <Title id="title">{this.state.title}</Title>

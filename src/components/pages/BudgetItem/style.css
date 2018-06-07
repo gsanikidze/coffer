@@ -46,17 +46,3 @@
 #budget_item #more_info #friend_list .friend{
     margin-bottom: 8pt;
 }
-
-#budget_item .drop_down_menu{
-    display: flex;
-    margin-right: 16pt;
-    justify-content: flex-end;
-}
-
-#budget_item .drop_down_menu ul{
-    padding: 16pt;
-    margin-top: -8pt;
-    border-radius: 4pt;
-    position: absolute;
-    z-index: 99;
-}
