@@ -110,7 +110,7 @@ class BudgetItem extends Component {
 }
                             <Title id="title">{this.state.title}</Title>
                             <MainLine/>
-                            <NumberInput/>
+                            <NumberInput props/>
                             <div>
                                 {ProgressBar(50)}
                                 <LightText id="light_text">{this.state.price - this.state.price / 2}$ of {this.state.price}$. Needed: {this.state.price / 2}$</LightText>

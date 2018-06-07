@@ -27,7 +27,8 @@ class CreateBudget extends Component {
                 price: undefined,
                 friends: undefined,
                 cover: undefined
-            }
+            },
+            budgetId: this.props.location.budgetId || undefined
         }
 
         this.onFormChange = this.onFormChange.bind(this)
@@ -118,13 +119,55 @@ class CreateBudget extends Component {
         e.target.style.border = `2px solid ${COLORS.primary}`
     }
 
-    createBudget(){
+    createBudget(budgetId){
         const localUid = JSON.parse(sessionStorage.getItem('uid'))
         const localToken = JSON.parse(sessionStorage.getItem('token'))
 
         if(localUid && localToken){
+            if(!budgetId){
             firebaseDB.ref(`budgets/${localUid}`).push(this.state.budgetInfo)
                 .then(() => this.setState({redirect: true}))
+            } else {
+                firebaseDB.ref(`budgets/${localUid}/${this.state.budgetId}`).set(this.state.budgetInfo)
+                .then(() => this.setState({redirect: true}))
+            }
+        }
+    }
+
+    getData(){
+        const localUid = JSON.parse(sessionStorage.getItem('uid'))
+        const localToken = JSON.parse(sessionStorage.getItem('token'))
+
+        // let title, price, friends, cover
+
+        if(localUid && localToken){
+            firebaseDB
+                .ref(`budgets/${localUid}/${this.state.budgetId}`)
+                .once('value')
+                .then(snapshot => {
+                        this.setState({
+                            budgetInfo: {
+                                title: snapshot
+                                       .val()
+                                       .title,
+                                price: snapshot
+                                       .val()
+                                       .price,
+                                friends: snapshot
+                                         .val()
+                                         .friends,
+                                cover: snapshot
+                                       .val()
+                                       .cover
+                            }
+                        })                       
+                })
+        }
+    }
+
+    componentDidMount(){
+        if(this.state.budgetId){
+            this.getData()
         }
     }
 
@@ -136,16 +179,16 @@ class CreateBudget extends Component {
 
         return (
             <form id="create_budget" onChange={this.onFormChange}>
-                <Breadcrumbs pageName="Create Budget" />
+                <Breadcrumbs pageName={this.state.budgetId ? 'Update Budget' : 'Create Budget'} />
                 <div className="container">
-                    <Title id="title">Create Budget</Title>
+                    <Title id="title">{this.state.budgetId ? 'Update Budget' : 'Create Budget'}</Title>
 
                     <div id="form_first_line">
-                        <InputWithLabel name="budget_title" isRequired label="Budget Title" placeHolder="type title"/>
-                        <InputWithLabel name="budget_price" isRequired label="Price ($)" placeHolder="00.00"/>
+                        <InputWithLabel value={this.state.budgetInfo.title} id="title_inp" name="budget_title" isRequired label="Budget Title" placeHolder="type title"/>
+                        <InputWithLabel value={this.state.budgetInfo.price} name="budget_price" isRequired label="Price ($)" placeHolder="00.00"/>
                     </div>
                     <div id="share_with_friends">
-                        <InputWithLabel name="share_with_friends" id="invite_friend" onKeyPress={this.onEnter} label="Share Budget With" placeHolder="type person email"/>
+                        <InputWithLabel value={this.state.budgetInfo.friends} name="share_with_friends" id="invite_friend" onKeyPress={this.onEnter} label="Share Budget With" placeHolder="type person email"/>
                     </div>
                     <div id="cover_photo">
                         <InputWithLabel name="cover_photo" label="Cover Photo" placeHolder="search photo"/>
@@ -157,7 +200,7 @@ class CreateBudget extends Component {
                         <Link to="/">
                             <PassiveButton>  Cancell  </PassiveButton>
                         </Link>
-                        <ActiveButton onClick={this.createBudget}> Create Budget </ActiveButton>
+                        <ActiveButton onClick={this.createBudget}> {this.state.budgetId ? 'Update Budget' : 'Create Budget'} </ActiveButton>
                     </div>
 
                 </div>

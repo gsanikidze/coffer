@@ -26,7 +26,7 @@ const InputField = (props) => {
     }
 
      
-    return <input style={TextInputFieldStyle} name={name} placeholder={placeholder || "Placeholder"} type="text" className="text_input_field"/> 
+    return <input style={TextInputFieldStyle} value={props && props.value ? props.value : null} name={name} placeholder={placeholder || "Placeholder"} type="text" className="text_input_field"/> 
 };
 
 const NumberInput = (props) => {

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 //my comp
 import {MAIN_SHADOW, COLORS} from '../UI_VARS.js';
@@ -33,9 +34,8 @@ const dropDownMenu = (props) => {
         <DropDownDiv>
             <DropDownUl>
                 <LightText>
-                    <li>Edit</li>
+                    <li><Link to={{pathname: 'create-budget', budgetId:props.budgetDbId}}> Edit </Link></li>
                     <li onClick={() => deleteFromDb(props.itemsType, props.budgetDbId, props.page)}>Delete</li>
-                    <li>Report</li>
                 </LightText>
             </DropDownUl>
         </DropDownDiv>
