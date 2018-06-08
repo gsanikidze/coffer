@@ -13,6 +13,7 @@ import add_gray_icon from '../../../img/icons/add_gray.svg';
 import bullets_gray_icon from '../../../img/icons/bullets_gray.svg';
 import Loading from '../../moleculas/lodaing'
 import DropDown from '../../moleculas/dropDownMenu.js'
+import budgetCalculation from '../../../functions/budgetCalculation'
 
 const containerStyle = {
     boxShadow: MAIN_SHADOW,
@@ -30,6 +31,9 @@ class BudgetItem extends Component {
             cover: '',
             title: '',
             price: null,
+            percent: null,
+            totalTransfer: null,
+            typedMoney: null,
             productImg: {
                 backgroundImage: ''
             },
@@ -39,6 +43,9 @@ class BudgetItem extends Component {
         this.showMenu = this
             .showMenu
             .bind(this);
+
+        this.onFormChange = this.onFormChange.bind(this)
+        this.onFormSubmit = this.onFormSubmit.bind(this)
     }
 
     showMenu() {
@@ -84,7 +91,40 @@ class BudgetItem extends Component {
                         self.setState({title, cover, price, productImg, loading: false})
                     })
             }
+            budgetCalculation(budgetId).then(({price, percent, totalTransfer}) => {
+                self.setState({
+                    price,
+                    percent,
+                    totalTransfer
+                })
+            })
         })(this)
+    }
+
+    onFormSubmit(){
+        if(!this.state.typedMoney){
+            budgetCalculation(this.state.budgetId, this.state.price - this.state.totalTransfer).then(({price, percent, totalTransfer}) => {
+                this.setState({
+                    price,
+                    percent,
+                    totalTransfer
+                })
+            })
+        } else {
+            budgetCalculation(this.state.budgetId, this.state.typedMoney).then(({price, percent, totalTransfer}) => {
+                this.setState({
+                    price,
+                    percent,
+                    totalTransfer
+                })
+            })
+        }
+    }
+
+    onFormChange(e){
+        this.setState({
+            typedMoney: parseInt(e.target.value)
+        })
     }
 
     render() {
@@ -110,16 +150,24 @@ class BudgetItem extends Component {
 }
                             <Title id="title">{this.state.title}</Title>
                             <MainLine/>
-                            <NumberInput props/>
+                            <form onChange={this.onFormChange}>
+                                <NumberInput placeholder={this.state.price - this.state.totalTransfer}/>
+                            </form>
                             <div>
-                                {ProgressBar(50)}
-                                <LightText id="light_text">{this.state.price - this.state.price / 2}$ of {this.state.price}$. Needed: {this.state.price / 2}$</LightText>
+                                {ProgressBar(this.state.percent)}
+                                <LightText id="light_text">{this.state.totalTransfer}$ of {this.state.price}$. Needed: {this.state.price - this.state.totalTransfer}$</LightText>
                             </div>
                             <div id="more_info">
                                 <FriendList showFullName={true}/>
                             </div>
 
+                            { 
+                                document.getElementsByClassName('submit_icon').item(0) ? document.getElementsByClassName('submit_icon').item(0).addEventListener('click', this.onFormSubmit) : null
+                            }
+
+
                         </div>
+
                     </div>
 }</div>
         );

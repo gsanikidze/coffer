@@ -25,6 +25,7 @@ class CreateBudget extends Component {
             budgetInfo: {
                 title: undefined,
                 price: undefined,
+                totalTransfer: 0,
                 friends: undefined,
                 cover: undefined
             },
@@ -122,14 +123,26 @@ class CreateBudget extends Component {
     createBudget(budgetId){
         const localUid = JSON.parse(sessionStorage.getItem('uid'))
         const localToken = JSON.parse(sessionStorage.getItem('token'))
+        let self = this
 
         if(localUid && localToken){
             if(!budgetId){
             firebaseDB.ref(`budgets/${localUid}`).push(this.state.budgetInfo)
                 .then(() => this.setState({redirect: true}))
             } else {
-                firebaseDB.ref(`budgets/${localUid}/${this.state.budgetId}`).set(this.state.budgetInfo)
-                .then(() => this.setState({redirect: true}))
+                firebaseDB
+                .ref(`budgets/${localUid}/${budgetId}`)
+                .once('value')
+                .then(function (snapshot) {
+                    self.setState({
+                        budgetInfo : {
+                            ...self.state.budgetInfo,
+                            totalTransfer: snapshot.val().totalTransfer
+                        }
+                    })
+                    firebaseDB.ref(`budgets/${localUid}/${self.state.budgetId}`).set(self.state.budgetInfo)
+                    .then(() => self.setState({redirect: true}))
+                })                
             }
         }
     }
@@ -200,7 +213,7 @@ class CreateBudget extends Component {
                         <Link to="/">
                             <PassiveButton>  Cancell  </PassiveButton>
                         </Link>
-                        <ActiveButton onClick={this.createBudget}> {this.state.budgetId ? 'Update Budget' : 'Create Budget'} </ActiveButton>
+                        <ActiveButton onClick={() => this.createBudget(this.state.budgetId)}> {this.state.budgetId ? 'Update Budget' : 'Create Budget'} </ActiveButton>
                     </div>
 
                 </div>

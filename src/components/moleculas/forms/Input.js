@@ -26,7 +26,7 @@ const InputField = (props) => {
     }
 
      
-    return <input style={TextInputFieldStyle} value={props && props.value ? props.value : null} name={name} placeholder={placeholder || "Placeholder"} type="text" className="text_input_field"/> 
+    return <input style={TextInputFieldStyle} value={props && props.value ? props.value : null} name={name} placeholder={placeholder || props || "Placeholder"} type="text" className="text_input_field"/> 
 };
 
 const NumberInput = (props) => {
@@ -35,7 +35,7 @@ const NumberInput = (props) => {
             <img src={us_dollar_icon} alt="Currency" className="us_dollar_icon"/>
             <div className="line" style={{backgroundColor: COLORS.dark_gray}}></div>
             {InputField(props.placeholder)}
-            <img src={submit_icon} alt="Submit Money" className="submit_icon"/>
+            <img src={submit_icon} alt="Submit Money" className="submit_icon" id="submit_icon"/>
         </div>
     )
 }
