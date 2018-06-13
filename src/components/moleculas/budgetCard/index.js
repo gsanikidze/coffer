@@ -10,10 +10,10 @@ import bullets_gray_icon from '../../../img/icons/bullets_gray.svg'
 import budget_is_done_icon from '../../../img/icons/done.svg'
 import FriendsList from './../FriendsList';
 import './style.css';
-import bike_photo from '../../../img/product_pics/triumphBonneville.JPG';
 import {NumberInput, InputWithLabel} from '../forms/Input';
 import close_window_icon from '../../../img/icons/close.svg';
 import DropDown from '../dropDownMenu'
+import budgetCalculation from '../../../functions/budgetCalculation'
 
 class BudgetCard extends Component {
 
@@ -24,6 +24,9 @@ class BudgetCard extends Component {
             openInvitationPopup: false,
             cover: this.props.cover,
             percent: this.props.percent,
+            price: null,
+            totalTransfer: null,
+            typedMoney: null,
             title: this.props.title,
             moneyNeeded: this.props.price,
             showDropDown: false
@@ -32,6 +35,8 @@ class BudgetCard extends Component {
         this.toggleDropDown = this
             .toggleDropDown
             .bind(this)
+
+        this.onFormSubmit = this.onFormSubmit.bind(this)
     }
 
     withImageOrNot(imgURL) {
@@ -45,18 +50,23 @@ class BudgetCard extends Component {
         }
     }
 
-    budgetIsFull(percent) {
-        if (percent === 100) {
-            return <MainButton className="transfer_money_btn">Transfer Money</MainButton>
-        } else {
-            return (<NumberInput placeholder={this.state.moneyNeeded}/>)
-        }
-    }
-
     toggleDropDown() {
         this.setState({
             showDropDown: !this.state.showDropDown
         })
+    }
+
+    componentWillMount() {
+        budgetCalculation(this.props.budgetDbId).then(({price, percent, totalTransfer}) => {
+            this.setState({price, percent, totalTransfer})
+        })
+    }
+
+    onFormSubmit(){
+        let id = this.props.budgetDbId
+        let val = document.getElementById(id)
+        //val = parseInt(val)
+        console.log(val)
     }
 
     render() {
@@ -131,10 +141,28 @@ class BudgetCard extends Component {
                         </div>
                     </Link>
                     {this.withImageOrNot(this.state.cover)}
-                    {this.budgetIsFull(this.state.percent)}
-                    {ProgressBar(this.state.percent)}
+                    {
+                        this.state.percent === 100 ?
+                            <MainButton className="transfer_money_btn">Transfer Money</MainButton> 
+                            :
+                            <form id={this.props.budgetDbId}>
+                                <NumberInput placeholder={this.state.price - this.state.totalTransfer}/>
+                            </form>
+                    }
+                    {ProgressBar(this.state.percent || 1)}
                     <div className="brick"></div>
                 </div>
+
+                
+                {document
+                        .getElementsByClassName('submit_icon')
+                        .item(0)
+                        ? document
+                            .getElementsByClassName('submit_icon')
+                            .item(0)
+                            .addEventListener('click', this.onFormSubmit)
+                        : null
+                }
             </Card>
         )
     }

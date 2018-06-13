@@ -46,3 +46,6 @@
 #budget_item #more_info #friend_list .friend{
     margin-bottom: 8pt;
 }
+.transfer_money_btn{
+    margin: 0 16pt;
+}

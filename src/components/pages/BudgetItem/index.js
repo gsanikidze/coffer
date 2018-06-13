@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {firebaseDB} from '../../../CONFIG'
-import { Redirect } from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 // my comp
 import Breadcrumbs from '../../moleculas/Breadcrumbs';
@@ -8,7 +8,7 @@ import FriendList from '../../moleculas/FriendsList';
 import {NumberInput} from '../../moleculas/forms/Input';
 import './style.css';
 import {MAIN_SHADOW, COLORS} from '../../UI_VARS';
-import {MainIcons, Title, MainLine, ProgressBar, LightText} from '../../UI_ATOMS';
+import {MainIcons, MainButton, Title, MainLine, ProgressBar, LightText} from '../../UI_ATOMS';
 import add_gray_icon from '../../../img/icons/add_gray.svg';
 import bullets_gray_icon from '../../../img/icons/bullets_gray.svg';
 import Loading from '../../moleculas/lodaing'
@@ -44,8 +44,12 @@ class BudgetItem extends Component {
             .showMenu
             .bind(this);
 
-        this.onFormChange = this.onFormChange.bind(this)
-        this.onFormSubmit = this.onFormSubmit.bind(this)
+        this.onFormChange = this
+            .onFormChange
+            .bind(this)
+        this.onFormSubmit = this
+            .onFormSubmit
+            .bind(this)
     }
 
     showMenu() {
@@ -82,9 +86,10 @@ class BudgetItem extends Component {
                             productImg = {
                                 backgroundImage: `url(${cover})`
                             }
-                        }
-                        else {
-                            window.location.replace('/')
+                        } else {
+                            window
+                                .location
+                                .replace('/')
                         }
                     })
                     .then(() => {
@@ -92,36 +97,24 @@ class BudgetItem extends Component {
                     })
             }
             budgetCalculation(budgetId).then(({price, percent, totalTransfer}) => {
-                self.setState({
-                    price,
-                    percent,
-                    totalTransfer
-                })
+                self.setState({price, percent, totalTransfer})
             })
         })(this)
     }
 
-    onFormSubmit(){
-        if(!this.state.typedMoney){
+    onFormSubmit() {
+        if (!this.state.typedMoney) {
             budgetCalculation(this.state.budgetId, this.state.price - this.state.totalTransfer).then(({price, percent, totalTransfer}) => {
-                this.setState({
-                    price,
-                    percent,
-                    totalTransfer
-                })
+                this.setState({price, percent, totalTransfer})
             })
         } else {
             budgetCalculation(this.state.budgetId, this.state.typedMoney).then(({price, percent, totalTransfer}) => {
-                this.setState({
-                    price,
-                    percent,
-                    totalTransfer
-                })
+                this.setState({price, percent, totalTransfer})
             })
         }
     }
 
-    onFormChange(e){
+    onFormChange(e) {
         this.setState({
             typedMoney: parseInt(e.target.value)
         })
@@ -149,10 +142,13 @@ class BudgetItem extends Component {
                                 : null
 }
                             <Title id="title">{this.state.title}</Title>
-                            <MainLine/>
-                            <form onChange={this.onFormChange}>
-                                <NumberInput placeholder={this.state.price - this.state.totalTransfer}/>
-                            </form>
+                            <MainLine/> {this.state.percent === 100
+                                ? <MainButton className="transfer_money_btn">Transfer Money</MainButton>
+                                : <form onChange={this.onFormChange}>
+                                    <NumberInput placeholder={this.state.price - this.state.totalTransfer}/>
+                                  </form>
+}
+
                             <div>
                                 {ProgressBar(this.state.percent)}
                                 <LightText id="light_text">{this.state.totalTransfer}$ of {this.state.price}$. Needed: {this.state.price - this.state.totalTransfer}$</LightText>
@@ -161,10 +157,15 @@ class BudgetItem extends Component {
                                 <FriendList showFullName={true}/>
                             </div>
 
-                            { 
-                                document.getElementsByClassName('submit_icon').item(0) ? document.getElementsByClassName('submit_icon').item(0).addEventListener('click', this.onFormSubmit) : null
-                            }
-
+                            {document
+                                .getElementsByClassName('submit_icon')
+                                .item(0)
+                                ? document
+                                    .getElementsByClassName('submit_icon')
+                                    .item(0)
+                                    .addEventListener('click', this.onFormSubmit)
+                                : null
+}
 
                         </div>
 
