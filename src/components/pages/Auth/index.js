@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {Redirect} from 'react-router-dom';
 import styled from 'styled-components'
 
 // my comp
-import Home from '../Home'
 import {firebase, firebaseDB} from '../../../CONFIG';
 import {checkAuth} from './checkAuth';
 import {logIn as logInAction, logOut as logOutAction} from '../../../actions';
 import './style.css';
-import {logOut} from './logOut'
 import { MAIN_GRADIENT } from '../../UI_VARS'
 import { Title, ActiveButton } from '../../UI_ATOMS'
 import backgroundImage from '../../../img/log-in.jpeg'

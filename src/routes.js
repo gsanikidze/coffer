@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // my comp
 import AuthPage from './components/pages/Auth';
@@ -10,7 +10,6 @@ import AddBankCard from './components/pages/AddBankCard';
 import Loading from './components/moleculas/lodaing'
 import PageNotFound from './components/pages/404';
 
-import { firebase } from './CONFIG'
 import { checkAuth } from './components/pages/Auth/checkAuth'
 
 class MainRouter extends Component {

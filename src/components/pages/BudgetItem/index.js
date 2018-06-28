@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {firebaseDB} from '../../../CONFIG'
-import {Redirect} from 'react-router-dom'
 
 // my comp
 import Breadcrumbs from '../../moleculas/Breadcrumbs';

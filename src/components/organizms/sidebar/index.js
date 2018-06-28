@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'glamor';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // style
 import './sidebar_layout.css';

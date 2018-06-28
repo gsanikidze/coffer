@@ -9,7 +9,6 @@ import { ActiveButton, PassiveButton, Title } from '../../UI_ATOMS';
 import { COLORS } from '../../UI_VARS';
 import { InputWithLabel } from '../../moleculas/forms/Input';
 import Breadcrumbs from '../../moleculas/Breadcrumbs';
-import FriendList from '../../moleculas/FriendsList';
 import './style.css';
 
 class CreateBudget extends Component {

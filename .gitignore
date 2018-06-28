@@ -18,8 +18,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# configuration files
-src/CONFIG.js
 
 # architecture
 Architecture.xmind

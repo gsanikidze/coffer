@@ -22,7 +22,6 @@ class bankCardList extends Component {
 
     getDataFromFirebase(){
         const localUid = JSON.parse(sessionStorage.getItem('uid'))
-        const localToken = JSON.parse(sessionStorage.getItem('token'))
 
         if(localUid){
             firebaseDB.ref(`cards/${localUid}`).once('value')
